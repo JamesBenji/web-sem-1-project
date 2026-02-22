@@ -2,7 +2,7 @@ import { Button } from "../interactives/Button"
 
 export const NavBar = () => {
     return (
-        <nav className="bg-gray-50 px-0 py-4 flex items-center justify-between">
+        <nav className="bg-gray-50 px-0 py-3 flex items-center justify-between">
         <span className="text-2xl font-bold tracking-wide text-brand-700 font-molle">MummyCares</span>
         <div className="flex gap-8 text-sm tracking-widest uppercase">
           <a href="#" className="hover:text-brand-400 transition-colors">Home</a>
