@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #fdf2f8;
+  --color-brand-100: #fce7f3;
+  --color-brand-200: #fccee8;
+  --color-brand-300: #fda5d5;
+  --color-brand-400: #fb64b6;
+  --color-brand-500: #f6339a;
+  --color-brand-600: #e60076;
+  --color-brand-700: #c6005c;
+  --color-brand-800: #a3004c;
+  --color-brand-900: #861043;
+  --color-brand-950: #510424;
+}
+
+@theme {
+  --font-molle: 'Molle', cursive;
+}
