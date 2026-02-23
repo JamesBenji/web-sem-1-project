@@ -12,8 +12,29 @@
   --color-brand-800: #a3004c;
   --color-brand-900: #861043;
   --color-brand-950: #510424;
+
+  --color-brandBlue-50: #f0f9ff;
+  --color-brandBlue-100: #dff2fe;
+  --color-brandBlue-200: #b8e6fe;
+  --color-brandBlue-300: #74d4ff;
+  --color-brandBlue-400: #00bcff;
+  --color-brandBlue-500: #00a6f4;
+  --color-brandBlue-600: #0084d1;
+  --color-brandBlue-700: #0069a8;
+  --color-brandBlue-800: #00598a;
+  --color-brandBlue-900: #024a70;
+  --color-brandBlue-950: #052f4a;
 }
 
 @theme {
   --font-molle: 'Molle', cursive;
+  --font-tangerine: 'Tangerine';
 }
+
+* {
+  /* margin: 0; */
+  /* padding: 0; */
+  box-sizing: border-box;
+  /* background-color: #fdf2f8; */
+}
+
