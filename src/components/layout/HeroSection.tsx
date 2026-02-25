@@ -4,7 +4,6 @@ import HeartIcon from "../../assets/icons/heart.png"
 import FeedingBabyVideo from "../../assets/videos/feeding-baby.webm"
 import SoupVideo1 from "../../assets/videos/soup-video-1.mp4"
 import CuttingVegetablesVideo from "../../assets/videos/cutting-vegetables.mp4"
-import { Search } from "lucide-react"
 
 function HeroSection() {
   return (
@@ -178,6 +177,59 @@ function HeroSection() {
 
           </div>
 
+                <div className="flex justify-between items-center mt-0 ">
+            <div className="absolute w-40 h-40  flex items-center justify-center -bottom-35 left-10">
+
+              <div className="absolute inset-0 border-2 border-dashed border-brand-300 rounded-full animate-[spin_20s_linear_infinite] opacity-40"></div>
+
+              <div className="absolute inset-4 border border-brand-200 rounded-full animate-[spin_10s_linear_reverse_infinite] opacity-60"></div>
+
+              <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-xl z-20 group cursor-pointer">
+                <img
+                  src={BouncingFruitsGif}
+                  alt="Bouncing Fruits"
+                  className="w-full h-full object-cover"
+                />
+
+                <div className="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white text-xl">
+                    <img
+                      src={HeartIcon}
+                      alt="Heart Icon"
+                    />
+                  </span>
+                </div>
+              </div>
+
+              <div className="absolute inset-0 animate-[spin_15s_linear_infinite]">
+                <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                  <path
+                    id="circlePath"
+                    d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                    fill="none"
+                  />
+                  <text className="text-[6px] font-black uppercase tracking-[0.4em] fill-brand-700">
+                    <textPath xlinkHref="#circlePath">
+                      Healthy Everyday • Healthy Everyday •
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+            </div>
+
+            {/* New section after hero */}
+            {/* <div className="max-w-lg text-right">
+              <p className="text-brand-800 text-xl font-medium leading-tight mb-2">
+                The ultimate culinary partner for the transition to solids.
+              </p>
+              <p className="text-brand-600 text-sm leading-relaxed max-w-sm ml-auto">
+                Explore chef-curated recipes, interactive kitchen tools, and expert-led
+                nutrition plans designed to create a joyful eating environment.
+              </p>
+            </div> */}
+
+
+          </div>
         </div>
 
 
