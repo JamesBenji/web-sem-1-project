@@ -24,17 +24,17 @@
   --color-brandBlue-800: #00598a;
   --color-brandBlue-900: #024a70;
   --color-brandBlue-950: #052f4a;
+
+  
 }
 
 @theme {
-  --font-molle: 'Molle', cursive;
-  --font-tangerine: 'Tangerine';
+  --font-bricolage: 'Bricolage Grotesque';
 }
 
 * {
-  /* margin: 0; */
-  /* padding: 0; */
   box-sizing: border-box;
-  /* background-color: #fdf2f8; */
+  font-family: var(--font-bricolage);
+  /* background-color: var(--color-brand-50); */
 }
 
