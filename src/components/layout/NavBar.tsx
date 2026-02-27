@@ -25,16 +25,31 @@ export const NavBar = () => {
       </div>
       <div className="flex items-center gap-8">
         <div className="flex gap-8 text-sm font-bold uppercase tracking-widest text-brand-700">
-          {NAV_LINKS.map((l) => (
-            <a
-              key={l}
-              href="#"
-              className="hover:text-brand-500 transition-colors duration-200 relative group"
-            >
-              {l}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
-            </a>
-          ))}
+          <a
+            href="/recipes"
+            className="hover:text-brand-500 transition-colors duration-200 relative group"
+          >
+            Recipes
+            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
+          </a>
+          <a
+            href="/about"
+            className="hover:text-brand-500 transition-colors duration-200 relative group"
+          >
+            About
+            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
+          </a>
+          <a
+            href="/contact"
+            className="hover:text-brand-500 transition-colors duration-200 relative group"
+          >
+            Contact
+            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
+          </a>
+
+          {/* {NAV_LINKS.map((l) => (
+            
+          ))} */}
         </div>
         <button className="flex items-center gap-2 bg-brand-900 text-brand-50 px-6 py-2.5 text-sm font-bold uppercase tracking-widest hover:bg-brand-600 transition-all duration-300 rounded-full border-2 border-white ">
           {/* <Search size={14} /> */}

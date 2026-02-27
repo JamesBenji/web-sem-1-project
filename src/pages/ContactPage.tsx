@@ -1,3 +1,5 @@
 export const ContactPage = () => {
-    return <div>Contact Page</div>
-}
+  return (
+    <div className="bg-brand-500 w-[90vw] text-amber-400">Contact Page</div>
+  );
+};
