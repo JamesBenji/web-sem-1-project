@@ -260,7 +260,7 @@ const HeroSection = () => {
   return (
     <div
       ref={containerRef}
-      className="min-h-[95dvh] bg-amber-100 font-sans text-brand-950 selection:bg-brand-200 overflow-hidden relative pt-20 "
+      className="min-h-[95dvh] bg-brand-50 font-sans text-brand-950 selection:bg-brand-200 overflow-hidden relative pt-20 "
     >
       {/* Decorative wavy lines */}
       <motion.div
@@ -413,7 +413,7 @@ const HeroSection = () => {
                 delay: 0.5,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="w-[28%] h-44 rounded-3xl overflow-hidden border-4 border-white shadow-2xl shrink-0"
+              className="w-[28%] h-44 rounded-full overflow-hidden border-4 border-white shadow-2xl shrink-0"
             >
               <video
                 src={SoupVideo1}
