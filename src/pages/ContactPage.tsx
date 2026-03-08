@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { ChangeEvent, SyntheticEvent } from "react";
+import type { ChangeEvent, FocusEvent, SyntheticEvent } from "react";
 import { NavBar } from "../components/layout/NavBar";
 
 type ContactFormData = {
@@ -22,6 +22,9 @@ const initialFormData: ContactFormData = {
 export const ContactPage = () => {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<ContactFormErrors>({});
+  const [touched, setTouched] = useState<Partial<Record<ContactField, boolean>>>(
+    {},
+  );
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -61,7 +64,9 @@ export const ContactPage = () => {
     const nextErrors: ContactFormErrors = {};
     (Object.keys(data) as ContactField[]).forEach((field) => {
       const message = validateField(field, data[field]);
-      if (message) nextErrors[field] = message;
+      if (message) {
+        nextErrors[field] = message;
+      }
     });
     return nextErrors;
   };
@@ -73,11 +78,26 @@ export const ContactPage = () => {
       name: ContactField;
       value: string;
     };
+
     setFormData((previous) => ({ ...previous, [name]: value }));
+    if (touched[name] || errors[name]) {
+      setErrors((previous) => ({ ...previous, [name]: validateField(name, value) }));
+    }
 
     if (submitted) {
       setSubmitted(false);
     }
+  };
+
+  const handleBlur = (
+    event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target as {
+      name: ContactField;
+      value: string;
+    };
+    setTouched((previous) => ({ ...previous, [name]: true }));
+    setErrors((previous) => ({ ...previous, [name]: validateField(name, value) }));
   };
 
   const handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
@@ -88,6 +108,12 @@ export const ContactPage = () => {
 
     const nextErrors = validateForm(formData);
     setErrors(nextErrors);
+    setTouched({
+      fullName: true,
+      email: true,
+      subject: true,
+      message: true,
+    });
     setSubmitted(false);
 
     if (Object.values(nextErrors).some(Boolean)) {
@@ -95,9 +121,11 @@ export const ContactPage = () => {
     }
 
     setIsSubmitting(true);
+
     window.setTimeout(() => {
       setFormData(initialFormData);
       setErrors({});
+      setTouched({});
       setSubmitted(true);
       setIsSubmitting(false);
     }, 650);
@@ -134,9 +162,12 @@ export const ContactPage = () => {
                   type="text"
                   value={formData.fullName}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   aria-invalid={Boolean(errors.fullName)}
-                  aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                  aria-describedby={
+                    errors.fullName ? "fullName-error" : undefined
+                  }
                   className={`w-full rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
                     errors.fullName
                       ? "border-brand-300 bg-brand-50 focus:border-brand-500 focus:ring-brand-200"
@@ -145,7 +176,10 @@ export const ContactPage = () => {
                   placeholder="Your name"
                 />
                 {errors.fullName ? (
-                  <p id="fullName-error" className="text-xs leading-relaxed text-brand-700">
+                  <p
+                    id="fullName-error"
+                    className="text-xs leading-relaxed text-brand-700"
+                  >
                     {errors.fullName}
                   </p>
                 ) : null}
@@ -164,6 +198,7 @@ export const ContactPage = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   aria-invalid={Boolean(errors.email)}
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -194,6 +229,7 @@ export const ContactPage = () => {
                   type="text"
                   value={formData.subject}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   aria-invalid={Boolean(errors.subject)}
                   aria-describedby={errors.subject ? "subject-error" : undefined}
@@ -205,7 +241,10 @@ export const ContactPage = () => {
                   placeholder="How can we help?"
                 />
                 {errors.subject ? (
-                  <p id="subject-error" className="text-xs leading-relaxed text-brand-700">
+                  <p
+                    id="subject-error"
+                    className="text-xs leading-relaxed text-brand-700"
+                  >
                     {errors.subject}
                   </p>
                 ) : null}
@@ -223,6 +262,7 @@ export const ContactPage = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   rows={3}
                   aria-invalid={Boolean(errors.message)}
@@ -235,7 +275,10 @@ export const ContactPage = () => {
                   placeholder="Share your question or request..."
                 />
                 {errors.message ? (
-                  <p id="message-error" className="text-xs leading-relaxed text-brand-700">
+                  <p
+                    id="message-error"
+                    className="text-xs leading-relaxed text-brand-700"
+                  >
                     {errors.message}
                   </p>
                 ) : null}
