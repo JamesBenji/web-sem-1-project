@@ -124,9 +124,20 @@ export const ContactPage = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl border border-brand-200 bg-white px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  aria-invalid={Boolean(errors.fullName)}
+                  aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                  className={`w-full rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
+                    errors.fullName
+                      ? "border-brand-300 bg-brand-50 focus:border-brand-500 focus:ring-brand-200"
+                      : "border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-100"
+                  }`}
                   placeholder="Your name"
                 />
+                {errors.fullName ? (
+                  <p id="fullName-error" className="text-xs leading-relaxed text-brand-700">
+                    {errors.fullName}
+                  </p>
+                ) : null}
               </div>
 
               <div className="space-y-1">
@@ -143,9 +154,20 @@ export const ContactPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl border border-brand-200 bg-white px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  className={`w-full rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
+                    errors.email
+                      ? "border-brand-300 bg-brand-50 focus:border-brand-500 focus:ring-brand-200"
+                      : "border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-100"
+                  }`}
                   placeholder="you@example.com"
                 />
+                {errors.email ? (
+                  <p id="email-error" className="text-xs leading-relaxed text-brand-700">
+                    {errors.email}
+                  </p>
+                ) : null}
               </div>
 
               <div className="space-y-1">
@@ -162,9 +184,20 @@ export const ContactPage = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl border border-brand-200 bg-white px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  aria-invalid={Boolean(errors.subject)}
+                  aria-describedby={errors.subject ? "subject-error" : undefined}
+                  className={`w-full rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
+                    errors.subject
+                      ? "border-brand-300 bg-brand-50 focus:border-brand-500 focus:ring-brand-200"
+                      : "border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-100"
+                  }`}
                   placeholder="How can we help?"
                 />
+                {errors.subject ? (
+                  <p id="subject-error" className="text-xs leading-relaxed text-brand-700">
+                    {errors.subject}
+                  </p>
+                ) : null}
               </div>
 
               <div className="space-y-1">
@@ -181,9 +214,20 @@ export const ContactPage = () => {
                   onChange={handleChange}
                   required
                   rows={3}
-                  className="w-full resize-y rounded-xl border border-brand-200 bg-white px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? "message-error" : undefined}
+                  className={`w-full resize-y rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
+                    errors.message
+                      ? "border-brand-300 bg-brand-50 focus:border-brand-500 focus:ring-brand-200"
+                      : "border-brand-200 bg-white focus:border-brand-500 focus:ring-brand-100"
+                  }`}
                   placeholder="Share your question or request..."
                 />
+                {errors.message ? (
+                  <p id="message-error" className="text-xs leading-relaxed text-brand-700">
+                    {errors.message}
+                  </p>
+                ) : null}
               </div>
 
               <div className="space-y-2 pt-1">
