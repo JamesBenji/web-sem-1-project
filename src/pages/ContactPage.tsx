@@ -85,7 +85,7 @@ export const ContactPage = () => {
     setErrors(nextErrors);
     setSubmitted(false);
 
-    if (Object.keys(nextErrors).length > 0) {
+    if (Object.values(nextErrors).some(Boolean)) {
       return;
     }
 
@@ -231,6 +231,16 @@ export const ContactPage = () => {
               </div>
 
               <div className="space-y-2 pt-1">
+                {submitted ? (
+                  <p
+                    className="rounded-2xl bg-brand-100 px-4 py-3 text-sm leading-relaxed text-brand-800"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    Message sent. We will get back to you soon.
+                  </p>
+                ) : null}
+
                 <button
                   type="submit"
                   className="inline-flex h-10 w-full items-center justify-center rounded-full border-2 border-white bg-brand-900 px-5 text-xs font-bold uppercase tracking-[0.14em] text-brand-50 transition hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 sm:w-auto"
@@ -241,16 +251,6 @@ export const ContactPage = () => {
                 <p className="text-xs leading-relaxed text-brand-600 sm:text-sm">
                   We usually reply within 1-2 business days.
                 </p>
-
-                {submitted ? (
-                  <p
-                    className="rounded-2xl bg-brand-100 px-4 py-3 text-sm leading-relaxed text-brand-800"
-                    role="status"
-                    aria-live="polite"
-                  >
-                    Message sent. We will get back to you soon.
-                  </p>
-                ) : null}
               </div>
             </form>
           </div>
