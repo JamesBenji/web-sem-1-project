@@ -27,6 +27,7 @@ export const ContactPage = () => {
   );
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formAlert, setFormAlert] = useState("");
 
   const validateField = (field: ContactField, value: string): string => {
     const trimmed = value.trim();
@@ -87,6 +88,9 @@ export const ContactPage = () => {
     if (submitted) {
       setSubmitted(false);
     }
+    if (formAlert) {
+      setFormAlert("");
+    }
   };
 
   const handleBlur = (
@@ -115,8 +119,10 @@ export const ContactPage = () => {
       message: true,
     });
     setSubmitted(false);
+    setFormAlert("");
 
     if (Object.values(nextErrors).some(Boolean)) {
+      setFormAlert("Please correct the highlighted fields before submitting.");
       return;
     }
 
@@ -127,6 +133,7 @@ export const ContactPage = () => {
       setErrors({});
       setTouched({});
       setSubmitted(true);
+      setFormAlert("");
       setIsSubmitting(false);
     }, 650);
   };
@@ -135,20 +142,48 @@ export const ContactPage = () => {
     <div className="min-h-screen bg-brand-50 text-brand-950">
       <NavBar />
 
-      <main className="mx-auto max-w-5xl px-5 pb-14 pt-24 sm:px-8 md:px-10 lg:px-12 lg:pb-16 lg:pt-28">
-        <section className="space-y-5 rounded-[2rem] bg-brand-100/15 p-4 sm:p-5 lg:p-6">
+      <main
+        className="mx-auto max-w-5xl px-5 pb-14 pt-24 sm:px-8 md:px-10 lg:px-12 lg:pb-16 lg:pt-28"
+        id="main-content"
+      >
+        <section
+          className="space-y-5 rounded-[2rem] bg-brand-100/15 p-4 sm:p-5 lg:p-6"
+          aria-labelledby="contact-page-title"
+        >
           <div className="space-y-2.5 text-center">
-            <h1 className="text-3xl font-black leading-[1.04] tracking-tight text-brand-950 sm:text-4xl lg:text-[2.75rem]">
+            <h1
+              id="contact-page-title"
+              className="text-3xl font-black leading-[1.04] tracking-tight text-brand-950 sm:text-4xl lg:text-[2.75rem]"
+            >
               Get in Touch
             </h1>
-            <p className="mx-auto max-w-lg text-sm leading-7 text-brand-700 sm:text-base">
+            <p
+              id="contact-page-intro"
+              className="mx-auto max-w-lg text-sm leading-7 text-brand-700 sm:text-base"
+            >
               Whether you have a recipe question or need support with your
               family food journey, our team is happy to help.
             </p>
           </div>
 
           <div className="mx-auto w-full max-w-xl rounded-3xl border border-brand-200 bg-gradient-to-b from-white to-brand-50 p-4 shadow-xl shadow-brand-100 sm:p-5">
-            <form className="space-y-3.5" onSubmit={handleSubmit} noValidate>
+            <h2 className="sr-only">Contact form</h2>
+            <form
+              className="space-y-3.5"
+              onSubmit={handleSubmit}
+              noValidate
+              aria-describedby="contact-page-intro"
+              aria-busy={isSubmitting}
+            >
+              {formAlert ? (
+                <p
+                  className="rounded-xl border border-brand-200 bg-brand-50 px-3.5 py-2 text-sm leading-relaxed text-brand-800"
+                  role="alert"
+                >
+                  {formAlert}
+                </p>
+              ) : null}
+
               <div className="space-y-1">
                 <label
                   className="text-xs font-bold uppercase tracking-[0.14em] text-brand-700"
@@ -163,6 +198,7 @@ export const ContactPage = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  autoComplete="name"
                   required
                   aria-invalid={Boolean(errors.fullName)}
                   aria-describedby={
@@ -199,6 +235,8 @@ export const ContactPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  autoComplete="email"
+                  inputMode="email"
                   required
                   aria-invalid={Boolean(errors.email)}
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -230,6 +268,7 @@ export const ContactPage = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  autoComplete="on"
                   required
                   aria-invalid={Boolean(errors.subject)}
                   aria-describedby={errors.subject ? "subject-error" : undefined}
@@ -265,6 +304,7 @@ export const ContactPage = () => {
                   onBlur={handleBlur}
                   required
                   rows={3}
+                  minLength={10}
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? "message-error" : undefined}
                   className={`w-full resize-y rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
