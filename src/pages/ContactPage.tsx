@@ -23,6 +23,7 @@ export const ContactPage = () => {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateField = (field: ContactField, value: string): string => {
     const trimmed = value.trim();
@@ -81,6 +82,10 @@ export const ContactPage = () => {
 
   const handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
+
     const nextErrors = validateForm(formData);
     setErrors(nextErrors);
     setSubmitted(false);
@@ -89,7 +94,13 @@ export const ContactPage = () => {
       return;
     }
 
-    setSubmitted(true);
+    setIsSubmitting(true);
+    window.setTimeout(() => {
+      setFormData(initialFormData);
+      setErrors({});
+      setSubmitted(true);
+      setIsSubmitting(false);
+    }, 650);
   };
 
   return (
@@ -243,9 +254,10 @@ export const ContactPage = () => {
 
                 <button
                   type="submit"
-                  className="inline-flex h-10 w-full items-center justify-center rounded-full border-2 border-white bg-brand-900 px-5 text-xs font-bold uppercase tracking-[0.14em] text-brand-50 transition hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 sm:w-auto"
+                  disabled={isSubmitting}
+                  className="inline-flex h-10 w-full items-center justify-center rounded-full border-2 border-white bg-brand-900 px-5 text-xs font-bold uppercase tracking-[0.14em] text-brand-50 transition hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-brand-900 sm:w-auto"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
 
                 <p className="text-xs leading-relaxed text-brand-600 sm:text-sm">
