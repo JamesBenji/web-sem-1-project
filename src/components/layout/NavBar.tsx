@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
-const NAV_LINKS = ["Recipes", "About", "Contact"];
+const NAV_LINKS = [
+  { label: "Recipes", to: "/recipes" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
+];
 
 export const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,36 +25,24 @@ export const NavBar = () => {
         scrolled ? "bg-white/90 backdrop-blur-md shadow-sm " : "bg-transparent"
       }`}
     >
-      <div className="text-2xl font-black tracking-tighter text-brand-900 select-none">
+      <Link
+        to="/"
+        className="text-2xl font-black tracking-tighter text-brand-900 select-none"
+      >
         tiny spoon<span className="text-brand-500">.</span>
-      </div>
+      </Link>
       <div className="flex items-center gap-8">
         <div className="flex gap-8 text-sm font-bold uppercase tracking-widest text-brand-700">
-          <a
-            href="/recipes"
-            className="hover:text-brand-500 transition-colors duration-200 relative group"
-          >
-            Recipes
-            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
-          </a>
-          <a
-            href="/about"
-            className="hover:text-brand-500 transition-colors duration-200 relative group"
-          >
-            About
-            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
-          </a>
-          <a
-            href="/contact"
-            className="hover:text-brand-500 transition-colors duration-200 relative group"
-          >
-            Contact
-            <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
-          </a>
-
-          {/* {NAV_LINKS.map((l) => (
-            
-          ))} */}
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="hover:text-brand-500 transition-colors duration-200 relative group"
+            >
+              {link.label}
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-500 group-hover:w-full transition-all duration-300" />
+            </Link>
+          ))}
         </div>
         <button className="flex items-center gap-2 bg-brand-900 text-brand-50 px-6 py-2.5 text-sm font-bold uppercase tracking-widest hover:bg-brand-600 transition-all duration-300 rounded-full border-2 border-white ">
           {/* <Search size={14} /> */}
