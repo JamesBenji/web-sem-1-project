@@ -1,4 +1,6 @@
 import { NavBar } from "../components/layout/NavBar";
+import babyImg from "../assets/images/happy-baby-1.jpg"; 
+
 
 export const AboutPage = () => {
   return (
@@ -23,7 +25,7 @@ export const AboutPage = () => {
 
           <hr className="border-brand-200" />
 
-          {/* Intro Section - Flex layout to match modern look */}
+          {/* Intro Section */}
           <section className="grid gap-10 md:grid-cols-2 md:items-center">
             <article className="space-y-4">
               <h2 className="text-2xl font-bold text-brand-900">Our Mission</h2>
@@ -40,7 +42,7 @@ export const AboutPage = () => {
 
             <figure className="overflow-hidden rounded-3xl border border-brand-200 bg-white p-2 shadow-xl shadow-brand-100">
               <img
-                src="/images/about-baby.jpg"
+                src={babyImg}
                 alt="Parent feeding a baby healthy homemade food"
                 className="rounded-2xl w-full object-cover"
               />
@@ -50,7 +52,7 @@ export const AboutPage = () => {
             </figure>
           </section>
 
-          {/* Values Section - Grid matching the "form card" style */}
+          {/* Values Section */}
           <section className="space-y-8">
             <h2 className="text-center text-2xl font-bold text-brand-900">Our Values</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -60,8 +62,13 @@ export const AboutPage = () => {
                 { title: "Joy", desc: "Food should be fun, colorful, and full of love." },
                 { title: "Trust", desc: "Honest guidance and real ingredients — always." }
               ].map((value, index) => (
-                <article key={index} className="rounded-2xl border border-brand-200 bg-white p-5 shadow-sm transition hover:shadow-md">
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-brand-800">{value.title}</h3>
+                <article 
+                  key={index} 
+                  className="rounded-2xl border border-brand-200 bg-white p-5 shadow-sm transition hover:shadow-md"
+                >
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-brand-800">
+                    {value.title}
+                  </h3>
                   <p className="mt-2 text-sm text-brand-600">{value.desc}</p>
                 </article>
               ))}
@@ -70,7 +77,9 @@ export const AboutPage = () => {
 
           {/* Client-Centric Section */}
           <section className="rounded-3xl border border-brand-200 bg-gradient-to-b from-white to-brand-50 p-8 shadow-lg">
-            <h2 className="text-xl font-bold text-brand-950 mb-4 text-center">Why Parents Love Tiny Spoon</h2>
+            <h2 className="text-xl font-bold text-brand-950 mb-4 text-center">
+              Why Parents Love Tiny Spoon
+            </h2>
             <ul className="grid gap-3 sm:grid-cols-2">
               {[
                 "Clear, step-by-step recipes",
