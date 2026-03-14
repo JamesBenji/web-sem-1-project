@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { ChangeEvent, FocusEvent, SyntheticEvent } from "react";
-import { NavBar } from "../components/layout/NavBar";
+// import { NavBar } from "../components/layout/NavBar";
 
 type ContactFormData = {
   fullName: string;
@@ -22,9 +22,9 @@ const initialFormData: ContactFormData = {
 export const ContactPage = () => {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [touched, setTouched] = useState<Partial<Record<ContactField, boolean>>>(
-    {},
-  );
+  const [touched, setTouched] = useState<
+    Partial<Record<ContactField, boolean>>
+  >({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formAlert, setFormAlert] = useState("");
@@ -82,7 +82,10 @@ export const ContactPage = () => {
 
     setFormData((previous) => ({ ...previous, [name]: value }));
     if (touched[name] || errors[name]) {
-      setErrors((previous) => ({ ...previous, [name]: validateField(name, value) }));
+      setErrors((previous) => ({
+        ...previous,
+        [name]: validateField(name, value),
+      }));
     }
 
     if (submitted) {
@@ -101,7 +104,10 @@ export const ContactPage = () => {
       value: string;
     };
     setTouched((previous) => ({ ...previous, [name]: true }));
-    setErrors((previous) => ({ ...previous, [name]: validateField(name, value) }));
+    setErrors((previous) => ({
+      ...previous,
+      [name]: validateField(name, value),
+    }));
   };
 
   const handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
@@ -140,14 +146,14 @@ export const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-brand-50 text-brand-950">
-      <NavBar />
+      {/* <NavBar /> */}
 
       <main
         className="mx-auto max-w-5xl px-5 pb-14 pt-24 sm:px-8 md:px-10 lg:px-12 lg:pb-16 lg:pt-28"
         id="main-content"
       >
         <section
-          className="space-y-5 rounded-[2rem] bg-brand-100/15 p-4 sm:p-5 lg:p-6"
+          className="space-y-5 rounded-4xl bg-brand-100/15 p-4 sm:p-5 lg:p-6"
           aria-labelledby="contact-page-title"
         >
           <div className="space-y-2.5 text-center">
@@ -166,7 +172,7 @@ export const ContactPage = () => {
             </p>
           </div>
 
-          <div className="mx-auto w-full max-w-xl rounded-3xl border border-brand-200 bg-gradient-to-b from-white to-brand-50 p-4 shadow-xl shadow-brand-100 sm:p-5">
+          <div className="mx-auto w-full max-w-xl rounded-3xl border border-brand-200 bg-linear-to-b from-white to-brand-50 p-4 shadow-xl shadow-brand-100 sm:p-5">
             <h2 className="sr-only">Contact form</h2>
             <form
               className="space-y-3.5"
@@ -248,7 +254,10 @@ export const ContactPage = () => {
                   placeholder="you@example.com"
                 />
                 {errors.email ? (
-                  <p id="email-error" className="text-xs leading-relaxed text-brand-700">
+                  <p
+                    id="email-error"
+                    className="text-xs leading-relaxed text-brand-700"
+                  >
                     {errors.email}
                   </p>
                 ) : null}
@@ -271,7 +280,9 @@ export const ContactPage = () => {
                   autoComplete="on"
                   required
                   aria-invalid={Boolean(errors.subject)}
-                  aria-describedby={errors.subject ? "subject-error" : undefined}
+                  aria-describedby={
+                    errors.subject ? "subject-error" : undefined
+                  }
                   className={`w-full rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
                     errors.subject
                       ? "border-brand-300 bg-brand-50 focus:border-brand-500 focus:ring-brand-200"
@@ -306,7 +317,9 @@ export const ContactPage = () => {
                   rows={3}
                   minLength={10}
                   aria-invalid={Boolean(errors.message)}
-                  aria-describedby={errors.message ? "message-error" : undefined}
+                  aria-describedby={
+                    errors.message ? "message-error" : undefined
+                  }
                   className={`w-full resize-y rounded-xl border px-3.5 py-2 text-brand-900 outline-none transition placeholder:text-brand-400 focus:ring-2 ${
                     errors.message
                       ? "border-brand-300 bg-brand-50 focus:border-brand-500 focus:ring-brand-200"

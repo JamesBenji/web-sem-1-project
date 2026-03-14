@@ -1,126 +1,140 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { motion, useInView, type Variants } from "framer-motion";
 import HappyBabyAndParent from "../../../assets/images/happy-baby-1.jpg";
 import HappyBabyAlone from "../../../assets/images/happy-baby-2.jpg";
-import HeartIcon from "../../../assets/icons/heart.png";
-import { Heart } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+const slideReveal: Variants = {
+  hidden: { clipPath: "inset(0 100% 0 0)", opacity: 0 },
+  visible: {
+    clipPath: "inset(0 0% 0 0)",
+    opacity: 1,
+    transition: {
+      duration: 0.9,
+      ease: [0.76, 0, 0.24, 1] as [number, number, number, number],
+    },
+  },
+};
+
+const imageInner: Variants = {
+  hidden: { x: 10, scale: 1.08 },
+  visible: {
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
+const WaveDivider = ({ fromDark }: { fromDark: boolean }) => (
+  <div className={fromDark ? "bg-brand-700" : "bg-brand-100"}>
+    <svg
+      viewBox="0 0 1440 80"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      className="w-full block"
+      style={{ height: 80, display: "block" }}
+    >
+      <path
+        d="M0,0 C360,80 1080,0 1440,80 L1440,80 L0,80 Z"
+        fill={fromDark ? "#fce7f3" : "#c6005c"}
+      />
+    </svg>
+  </div>
+);
 
 export const RevealSection = () => {
-  const containerRef = useRef(null);
-  const text1Ref = useRef(null);
-  const text2Ref = useRef(null);
-  const img1Ref = useRef(null);
-  const img2WrapperRef = useRef(null);
-  const img2Ref = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=300%", // Scroll distance
-          scrub: 1.2,
-          pin: true, // Locks the layout in place
-          anticipatePin: 1,
-        },
-      });
-
-      tl
-        // 1. Text Animation: Slide & Fade
-        .to(text1Ref.current, { y: -50, opacity: 0, duration: 1 }, 0)
-        .fromTo(
-          text2Ref.current,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1 },
-          1.2,
-        )
-
-        // 2. Image Animation: Directional Reveal
-        // Slightly scale down the first image
-        .to(
-          img1Ref.current,
-          { scale: 0.9, filter: "blur(5px)", duration: 1 },
-          1,
-        )
-
-        // Reveal the second image wrapper (the mask) from left to right
-        .fromTo(
-          img2WrapperRef.current,
-          { clipPath: "inset(0 100% 0 0)" }, // Hidden to the right
-          { clipPath: "inset(0 0% 0 0)", duration: 1.5, ease: "power2.inOut" },
-          1.1,
-        )
-
-        // Counter-animate the image inside to create a "parallax reveal"
-        .fromTo(
-          img2Ref.current,
-          { xPercent: 20, scale: 1.1 },
-          { xPercent: 0, scale: 1, duration: 1.5, ease: "power2.out" },
-          1.1,
-        );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const ref1 = useRef<HTMLDivElement>(null);
+  const ref2 = useRef<HTMLDivElement>(null);
+  const inView1 = useInView(ref1, { once: true, margin: "-80px" });
+  const inView2 = useInView(ref2, { once: true, margin: "-80px" });
 
   return (
-    <section
-      ref={containerRef}
-      className=" h-screen bg-amber-100 sticky top-0 "
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full w-full  mx-auto px-16 items-center gap-12 bg-brand-700 rounded-t-[4rem]">
-        {/* Left Column: Text Content */}
-        <div className="relative flex flex-col justify-center h-75">
-          <div className="relative">
-            <h3
-              ref={text1Ref}
-              className="text-8xl lg:text-8xl leading-[1.1] text-amber-300 font-bold"
-            >
-              <span className="flex">We help you cook for your world. ❤️ </span>
-              <span className="text-5xl text-brand-200 leading-tight">
-                Weaning made easy.
-              </span>
+    <section className="bg-brand-50">
+      <div className="rounded-t-[4rem] overflow-hidden">
+        <div
+          ref={ref1}
+          className="grid grid-cols-1 lg:grid-cols-2 w-full px-8 lg:px-16 py-20 gap-12 items-center bg-brand-100"
+        >
+          <motion.div
+            className="flex flex-col justify-center gap-4"
+            variants={fadeUp}
+            initial="hidden"
+            animate={inView1 ? "visible" : "hidden"}
+            transition={{ delay: 0.1 }}
+          >
+            <h3 className="text-5xl lg:text-7xl leading-[1.1] font-bold text-brand-800 text-center">
+              We help you cook for your world.
             </h3>
-            <h3
-              ref={text2Ref}
-              className="absolute top-0 left-0 text-5xl lg:text-8xl leading-[1.1] text-amber-300 font-bold opacity-0"
-            >
-              With you every step <br /> of the way.
-              <br />{" "}
-              <span className="text-5xl text-brand-200 leading-tight">
-                Every day. Always.
-              </span>
-            </h3>
-          </div>
+
+            <p className="text-base lg:text-lg leading-relaxed text-brand-600 text-center max-w-md mx-auto">
+              That little face looking up at you deserves the best start. We put
+              together recipes that are gentle enough for tiny tummies, simple
+              enough for busy parents, and good enough that you'll want to make
+              them again.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="relative aspect-4/5 lg:aspect-square w-full max-w-xl overflow-hidden rounded-4xl justify-self-center"
+            variants={slideReveal}
+            initial="hidden"
+            animate={inView1 ? "visible" : "hidden"}
+            transition={{ delay: 0.2 }}
+          >
+            <motion.img
+              src={HappyBabyAlone}
+              alt="Baby Alone"
+              className="w-full h-full object-cover"
+              variants={imageInner}
+              initial="hidden"
+              animate={inView1 ? "visible" : "hidden"}
+              transition={{ delay: 0.2 }}
+            />
+          </motion.div>
         </div>
 
-        {/* Right Column: Visual Stage */}
-        <div className="relative aspect-4/5 lg:aspect-square w-full max-w-xl mx-auto overflow-hidden rounded-[40px] border-8 border-amber-300/10 shadow-2xl">
-          {/* Background Image (Base) */}
-          <img
-            ref={img1Ref}
-            src={HappyBabyAlone}
-            alt="Baby Alone"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+        <WaveDivider fromDark={false} />
 
-          {/* Foreground Image (The Reveal) */}
-          <div
-            ref={img2WrapperRef}
-            className="absolute inset-0 w-full h-full z-10 overflow-hidden"
-            style={{ clipPath: "inset(0 100% 0 0)" }}
+        <div
+          ref={ref2}
+          className="grid grid-cols-1 lg:grid-cols-2 w-full px-8 lg:px-16 py-20 gap-12 items-center bg-brand-700"
+        >
+          <motion.div
+            className="relative aspect-4/5 lg:aspect-square w-full max-w-xl overflow-hidden rounded-4xl justify-self-center"
+            variants={slideReveal}
+            initial="hidden"
+            animate={inView2 ? "visible" : "hidden"}
+            transition={{ delay: 0.2 }}
           >
-            <img
-              ref={img2Ref}
+            <motion.img
               src={HappyBabyAndParent}
               alt="Baby and Parent"
               className="w-full h-full object-cover"
+              variants={imageInner}
+              initial="hidden"
+              animate={inView2 ? "visible" : "hidden"}
+              transition={{ delay: 0.2 }}
             />
-          </div>
+          </motion.div>
+
+          <motion.div
+            className="flex flex-col justify-center gap-4"
+            variants={fadeUp}
+            initial="hidden"
+            animate={inView2 ? "visible" : "hidden"}
+            transition={{ delay: 0.1 }}
+          >
+            <h3 className="text-5xl lg:text-7xl leading-[1.1] font-bold text-amber-300 text-center">
+              With you every step of the way.
+            </h3>
+            <p className="text-2xl lg:text-3xl leading-snug font-medium text-brand-100 text-center">
+              Every day. Always.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
