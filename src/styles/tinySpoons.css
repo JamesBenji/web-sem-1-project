@@ -1,0 +1,389 @@
+.recipe-detail-root {
+  @apply min-h-screen bg-[#fffbfe] font-[Bricolage_Grotesque,sans-serif];
+}
+
+.recipe-detail-root > header {
+  @apply relative h-75 overflow-hidden;
+}
+
+.recipe-detail-root > header img {
+  @apply w-full h-full object-cover;
+}
+
+.recipe-detail-root > header .hero-overlay {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 242, 248, 0.3) 0%,
+    rgba(253, 242, 248, 0.95) 100%
+  );
+}
+
+.recipe-detail-root > header .hero-meta {
+  @apply absolute bottom-6 left-6 right-6;
+}
+
+.hero-tag {
+  @apply rounded-full px-3.5 py-1 text-xs font-bold tracking-[0.5px];
+}
+
+.hero-title {
+  @apply mt-2 mb-1 text-[clamp(22px,5vw,32px)] font-black text-brand-950 leading-[1.15];
+}
+
+.hero-stats {
+  @apply flex gap-4 text-brand-800 text-[13px] font-semibold flex-wrap;
+}
+
+.hero-stats span {
+  @apply flex items-center gap-1;
+}
+
+/* Navigation back button */
+.recipe-detail-root > header nav {
+  @apply absolute top-5 left-5;
+}
+
+.back-btn {
+  @apply flex items-center gap-2 bg-white/90 backdrop-blur-sm text-brand-900
+    border-[1.5px] border-brand-300 rounded-xl px-4 py-2 cursor-pointer
+    font-semibold font-[inherit] text-sm transition-colors duration-200
+    hover:bg-white;
+}
+
+.recipe-detail-root > main {
+  @apply max-w-205 mx-auto px-5 pt-6 pb-15 grid gap-6;
+  grid-template-columns: 1fr 260px;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "desc    aside"
+    "timer   aside"
+    "steps   aside"
+    "done    aside";
+}
+
+@media (max-width: 700px) {
+  .recipe-detail-root > main {
+    @apply grid-cols-1;
+    grid-template-areas:
+      "desc"
+      "aside"
+      "timer"
+      "steps"
+      "done";
+  }
+}
+
+.recipe-description {
+  grid-area: desc;
+  @apply text-brand-900 text-base leading-[1.7] bg-brand-50 rounded-2xl
+    px-5 py-4 border-l-4 border-brand-400;
+}
+
+.global-timer-section {
+  @apply rounded-[20px] p-5 border-2 border-brand-300;
+  background: linear-gradient(135deg, #fce7f3 0%, #fff8fd 100%);
+}
+
+.global-timer-section h2 {
+  @apply text-[11px] text-brand-800 font-bold tracking-[1px] uppercase mb-3;
+}
+
+.global-timer-inner {
+  @apply flex justify-between items-center mb-3;
+}
+
+.global-timer-display {
+  @apply text-[28px] font-extrabold text-brand-700 tracking-[-0.5px];
+}
+
+.global-timer-sub {
+  @apply text-xs text-brand-500;
+}
+
+.global-timer-btns {
+  @apply flex gap-2;
+}
+
+.timer-progress-track {
+  @apply bg-brand-100 rounded-full h-2 overflow-hidden;
+}
+
+.timer-progress-fill {
+  @apply h-full rounded-full transition-[width] duration-1000 ease-linear;
+  background: linear-gradient(90deg, #fb64b6, #f6339a);
+}
+
+.recipe-detail-root > main > aside {
+  grid-area: aside;
+  @apply flex flex-col gap-5 self-start sticky top-4;
+}
+
+.aside-card {
+  @apply bg-white rounded-[18px] border-[1.5px] border-brand-200 overflow-hidden;
+}
+
+.aside-card-header {
+  @apply px-4.5 pt-3.5 pb-2.5 text-sm font-extrabold text-brand-950
+    flex items-center gap-2 border-b border-brand-50;
+}
+
+.aside-card-header span.icon {
+  @apply bg-brand-100 rounded-lg px-2 py-1 text-base;
+}
+
+.ingredient-row {
+  @apply flex justify-between px-4.5 py-2.5 text-sm;
+}
+
+.ingredient-row + .ingredient-row {
+  @apply border-t border-brand-50;
+}
+
+.ingredient-name {
+  @apply text-brand-950 font-medium;
+}
+
+.ingredient-amount {
+  @apply text-brand-500 font-bold;
+}
+
+.nutrition-grid {
+  @apply grid grid-cols-2 gap-px bg-brand-50;
+}
+
+.nutrition-cell {
+  @apply bg-white px-3.5 py-2.5 text-center;
+}
+
+.nutrition-value {
+  @apply text-base font-extrabold text-brand-700;
+}
+
+.nutrition-label {
+  @apply text-[11px] text-brand-800 font-semibold uppercase tracking-[0.5px];
+}
+
+.steps-section {
+  grid-area: steps;
+}
+
+.steps-section > h2 {
+  @apply text-xl font-extrabold text-brand-950 mb-4 flex items-center gap-2;
+}
+
+.steps-section > h2 span.icon {
+  @apply bg-brand-100 rounded-[10px] px-2.5 py-1.5 text-lg;
+}
+
+.steps-list {
+  @apply flex flex-col gap-4 list-none;
+}
+
+.steps-list > li > article {
+  @apply bg-white rounded-[20px] border-2 border-brand-200 p-5 pb-4
+    transition-all duration-300 ease-in-out scroll-mt-20;
+}
+
+.steps-list > li > article.step-done {
+  @apply bg-brand-50 border-brand-300 opacity-75;
+}
+
+.steps-list > li > article.step-active {
+  @apply border-brand-500 shadow-[0_0_0_3px_rgba(246,51,154,0.12)];
+}
+
+.step-header {
+  @apply flex items-start gap-3.5 mb-3;
+}
+
+.step-number {
+  @apply shrink-0 w-9 h-9 bg-brand-100 rounded-xl flex items-center justify-center
+    text-brand-700 font-extrabold text-base transition-all duration-300;
+}
+
+.step-number.done {
+  @apply bg-brand-500 text-white;
+}
+
+.step-title {
+  @apply font-extrabold text-base text-brand-950 mb-1;
+}
+
+.step-instruction {
+  @apply text-brand-900 text-sm leading-[1.65];
+}
+
+.step-tip {
+  @apply bg-[#fff8fd] rounded-[10px] px-3.5 py-2 text-[13px] text-brand-800
+    mb-3 border-l-[3px] border-brand-400 italic;
+}
+
+.step-actions {
+  @apply flex flex-col gap-2.5;
+}
+
+.mark-done-btn {
+  @apply flex items-center justify-center gap-2 rounded-[10px] px-4 py-2
+    cursor-pointer font-bold text-sm font-[inherit] transition-all duration-200
+    border-[1.5px] border-brand-200 bg-transparent text-brand-500;
+}
+
+.mark-done-btn.done {
+  @apply bg-brand-100 text-brand-700 border-brand-300;
+}
+
+.done-banner-section {
+  grid-area: done;
+}
+
+.done-banner {
+  @apply border-2 border-brand-300 rounded-[20px] p-6 text-center;
+  background: linear-gradient(135deg, #fce7f3, #fdf2f8);
+}
+
+.done-banner-emoji {
+  @apply text-[36px] mb-2;
+}
+
+.done-banner-title {
+  @apply font-black text-xl text-brand-700 mb-1.5;
+}
+
+.done-banner-text {
+  @apply text-brand-900 text-sm;
+}
+
+.recipe-detail-root > footer {
+  @apply text-center p-5 text-xs text-brand-300 border-t border-brand-100
+    font-semibold tracking-[0.5px];
+}
+
+.step-timer {
+  @apply flex items-center gap-2.5 bg-[#fff8fd] rounded-xl px-3.5 py-2
+    border-[1.5px] border-brand-200 text-sm flex-wrap;
+}
+
+.step-timer.done {
+  @apply bg-brand-100 border-brand-300;
+}
+
+.step-timer-label {
+  @apply text-brand-900 font-semibold;
+}
+
+.step-timer-label.done {
+  @apply text-brand-700;
+}
+
+.step-timer-btns {
+  @apply flex gap-1.5 ml-auto;
+}
+
+.timer-btn-start {
+  @apply flex items-center gap-1.25 bg-brand-500 text-white border-none
+    rounded-lg px-3 py-1.25 cursor-pointer font-semibold text-[13px] font-[inherit];
+}
+
+.timer-btn-start.running {
+  @apply bg-brand-200 text-brand-700;
+}
+
+.timer-btn-reset {
+  @apply flex items-center bg-brand-50 text-brand-700 border-[1.5px]
+    border-brand-200 rounded-lg px-2.5 py-1.25 cursor-pointer font-[inherit];
+}
+
+.timer-action-btn {
+  @apply flex items-center gap-1.5 rounded-xl px-4.5 py-2.5 cursor-pointer
+    font-bold text-sm font-[inherit] border-2 border-brand-500 transition-all duration-200;
+}
+
+.timer-action-btn.start {
+  @apply bg-brand-500 text-white;
+}
+
+.timer-action-btn.pause {
+  @apply bg-white text-brand-700;
+}
+
+.timer-action-btn-reset {
+  @apply bg-white text-brand-700 border-2 border-brand-300 rounded-xl
+    px-3.5 py-2.5 cursor-pointer font-[inherit];
+}
+
+.sticky-notification-portal {
+  @apply fixed top-0 left-0 right-0 z-9999 flex flex-col items-center
+    gap-2.5 p-4 pointer-events-none;
+}
+
+.sticky-notification {
+  @apply pointer-events-auto bg-white border-2 border-brand-500 rounded-[18px]
+    p-4 shadow-[0_8px_40px_rgba(246,51,154,0.25)] flex items-start gap-3.5
+    max-w-105 w-full;
+  animation: notif-slide-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.sticky-notification.exiting {
+  animation: notif-slide-out 0.25s ease-in forwards;
+}
+
+@keyframes notif-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes notif-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+}
+
+.notif-icon {
+  @apply shrink-0 w-10 h-10 bg-brand-100 rounded-xl flex items-center
+    justify-center text-xl;
+}
+
+.notif-body {
+  @apply flex-1;
+}
+
+.notif-title {
+  @apply font-extrabold text-sm text-brand-950 mb-0.75;
+}
+
+.notif-text {
+  @apply text-[13px] text-brand-900 leading-normal;
+}
+
+.notif-actions {
+  @apply flex gap-2 mt-2.5 flex-wrap;
+}
+
+.notif-btn-dismiss {
+  @apply text-[13px] font-bold font-[inherit] px-3.5 py-1.5 rounded-lg
+    cursor-pointer bg-brand-100 text-brand-700 border-[1.5px] border-brand-300
+    transition-colors duration-150 hover:bg-brand-300;
+}
+
+.notif-btn-next {
+  @apply text-[13px] font-bold font-[inherit] px-3.5 py-1.5 rounded-lg
+    cursor-pointer bg-brand-500 text-white border-none
+    transition-colors duration-150 hover:bg-brand-700;
+}
+
+.notif-close {
+  @apply shrink-0 bg-transparent border-none cursor-pointer text-brand-300
+    text-lg leading-none px-1 py-0.5 font-[inherit] hover:text-brand-700;
+}

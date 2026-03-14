@@ -1,15 +1,12 @@
 import { Outlet } from "react-router";
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis } from "lenis/react";
 
 function App() {
-  const lenis = useLenis((lenis) => {
-    // called every scroll
-    console.log(lenis);
-  });
   return (
     <main>
-      <ReactLenis root />
-      <Outlet />
+      <ReactLenis root>
+        <Outlet />
+      </ReactLenis>
     </main>
   );
 }
