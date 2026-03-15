@@ -8,11 +8,14 @@ import { Link } from "react-router";
 export const RecipePreviewSection = () => {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [featured] = useState(() =>
+    [...RECIPES].sort(() => Math.random() - 0.5).slice(0, 6),
+  );
 
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % RECIPES.length);
+      setIndex((prev) => (prev + 1) % featured.length);
     }, 1500);
     return () => clearInterval(interval);
   }, [isPaused]);
@@ -43,10 +46,10 @@ export const RecipePreviewSection = () => {
               className="space-y-2"
             >
               <span className="text-lg font-black uppercase text-brand-400 bg-gray-100 px-3 py-1 rounded-full">
-                {RECIPES[index].tag} - {RECIPES[index].stage}
+                {featured[index]?.tag || ""} - {featured[index].stage}
               </span>
               <h2 className="text-4xl font-black text-brand-950">
-                {RECIPES[index].name}
+                {featured[index].name}
               </h2>
             </motion.div>
           </AnimatePresence>
@@ -57,7 +60,7 @@ export const RecipePreviewSection = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {RECIPES.map((item, i) => {
+          {featured.map((item, i) => {
             const isActive = i === index;
             const itemColor = BRAND_PALETTE[i % BRAND_PALETTE.length];
 

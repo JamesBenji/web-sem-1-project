@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, type FC } from "react";
+import { useState, useRef, useCallback, type FC, useEffect } from "react";
 import { tagColors } from "../utils/helpers";
 import { CheckIcon, ClockIcon, InfoIcon } from "../components/Icons";
 import { GlobalTimerSection } from "../components/timer/GlobalTimerSection";
@@ -11,6 +11,10 @@ import { useSearchParams } from "react-router";
 import { RECIPES } from "../data/recipes-data";
 
 export const RecipeDetail: FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [searchParams] = useSearchParams();
   const id = Number(searchParams.get("id"));
   const recipe = RECIPES.find((r) => r.id === id);

@@ -56,7 +56,9 @@ export const FeaturesSection = () => {
 
   return (
     <section>
-      <WaveDivider from="#fdf2f8" to="#fce7f3" />
+      <div className="my-2" />
+
+      <WaveDivider from="#ffffff" to="#fce7f3" />
 
       <FadeUp className="pt-5 text-center bg-brand-100">
         <span className="text-lg font-black uppercase tracking-wide text-brand-400">
@@ -86,7 +88,7 @@ export const FeaturesSection = () => {
           animate={inView0 ? "visible" : "hidden"}
           transition={{ delay: 0.1 }}
         >
-          <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-400">
+          <span className="text-sm font-black uppercase tracking-wide text-brand-400">
             {FEATURE_STEPS[0].tag}
           </span>
           <div className="text-8xl lg:text-9xl font-black leading-none select-none text-brand-300">
@@ -156,7 +158,7 @@ export const FeaturesSection = () => {
           animate={inView1 ? "visible" : "hidden"}
           transition={{ delay: 0.1 }}
         >
-          <span className="text-xs font-black uppercase tracking-[0.35em] text-amber-300">
+          <span className="text-sm font-black uppercase tracking-wide text-amber-300">
             {FEATURE_STEPS[1].tag}
           </span>
           <div className="text-8xl lg:text-9xl font-black leading-none select-none text-brand-500">
@@ -190,7 +192,7 @@ export const FeaturesSection = () => {
           animate={inView2 ? "visible" : "hidden"}
           transition={{ delay: 0.1 }}
         >
-          <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-400">
+          <span className="text-sm font-black uppercase tracking-wide text-brand-400">
             {FEATURE_STEPS[2].tag}
           </span>
           <div className="text-8xl lg:text-9xl font-black leading-none select-none text-brand-300">

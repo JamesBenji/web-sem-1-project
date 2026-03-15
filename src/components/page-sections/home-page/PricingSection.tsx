@@ -7,7 +7,7 @@ export const PricingSection = () => (
   <section className="bg-white py-24 px-12">
     <div className="max-w-7xl mx-auto">
       <FadeUp className="text-center mb-16">
-        <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-400">
+        <span className="text-sm font-black uppercase tracking-wide text-brand-400">
           Simple Pricing
         </span>
         <h2 className="text-5xl font-black text-brand-950 mt-3 leading-tight">
@@ -38,7 +38,7 @@ export const PricingSection = () => (
             </div>
             <ul className="space-y-3 flex-1 mb-8">
               {[
-                "100 of 200 recipes",
+                "50 of 200 recipes",
                 "Basic stage guidance",
                 "Community access",
               ].map((perk) => (
