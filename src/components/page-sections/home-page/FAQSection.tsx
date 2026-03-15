@@ -7,13 +7,13 @@ export const FAQSection = () => {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-white py-24 px-8 lg:px-16">
+    <section id="faq" className="bg-white py-12 px-8 lg:px-16">
       <div className="max-w-3xl mx-auto">
-        <FadeUp className="text-center mb-16">
+        <FadeUp className="text-center mb-4 lg:mb-16">
           <span className="text-sm font-black uppercase tracking-wide text-brand-400">
             FAQ
           </span>
-          <h2 className="text-5xl font-black text-brand-950 mt-3 leading-tight">
+          <h2 className="text-3xl lg:text-5xl font-black text-brand-950 mt-3 leading-tight">
             Questions we
             <br />
             <span className="text-brand-500">get asked a lot.</span>

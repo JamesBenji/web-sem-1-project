@@ -10,7 +10,7 @@ export const CTASection = () => {
   return (
     <section
       ref={ref}
-      className="bg-brand-600 py-28 px-12 relative overflow-hidden"
+      className="bg-brand-600 py-20 lg:py-28 px-12 relative overflow-hidden"
     >
       <div className="absolute -top-20 -right-20 w-80 h-80 bg-brand-500 rounded-full opacity-30 blur-3xl" />
       <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-brand-700 rounded-full opacity-40 blur-3xl" />
@@ -24,7 +24,7 @@ export const CTASection = () => {
           <p className="text-brand-200 text-sm font-black uppercase tracking-wide mb-6">
             Start Your Journey
           </p>
-          <h2 className="text-6xl font-black text-white leading-tight mb-6">
+          <h2 className="text-3xl lg:text-6xl font-black text-white leading-tight mb-6">
             Your baby's first
             <br />
             flavour adventure
@@ -41,16 +41,16 @@ export const CTASection = () => {
                   hovered: { scale: 1.02, y: -2 },
                 }}
                 className="
-          relative flex items-center gap-2 h-16 px-10 py-4 
-          bg-white text-brand-700 border-4 border-white
-          text-lg font-black tracking-normal rounded-full 
-          shadow-sm shadow-brand-800/20 
-          transition-colors duration-300 ease-out 
-          hover:bg-brand-50 hover:shadow-md
-        "
+      relative flex items-center gap-2 h-12 px-6 py-3
+      lg:h-16 lg:px-10 lg:py-4
+      bg-white text-brand-700 border-4 border-white
+      text-base lg:text-lg font-black tracking-normal rounded-full
+      shadow-sm shadow-brand-800/20
+      transition-colors duration-300 ease-out
+      hover:bg-brand-50 hover:shadow-md
+    "
               >
                 <span>See Recipes</span>
-
                 <motion.span
                   variants={{
                     hovered: { x: 5 },

@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { FadeUp } from "../../ui/FadeUp";
 import { Link } from "react-router";
-import { useRef, useState } from "react";
 
 const PLANS = [
   {
@@ -66,16 +65,6 @@ const PLANS = [
 ];
 
 export const PricingSection = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const cardWidth = el.scrollWidth / PLANS.length;
-    setActiveIndex(Math.round(el.scrollLeft / cardWidth));
-  };
-
   return (
     <section className="bg-white py-24 px-12">
       <div className="max-w-7xl mx-auto">
@@ -226,93 +215,66 @@ export const PricingSection = () => {
         </div>
 
         {/* mobile only */}
-        <div className="flex lg:hidden flex-col items-center gap-6">
-          <div
-            ref={scrollRef}
-            onScroll={handleScroll}
-            style={{ touchAction: "pan-y" }}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth w-full px-[10%] pb-2 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
-          >
-            {PLANS.map((plan) => (
-              <div
-                key={plan.label}
-                className={`snap-center shrink-0 w-[80%] rounded-3xl p-8 flex flex-col border-2 ${
-                  plan.dark
-                    ? "bg-brand-950 border-brand-800"
-                    : "bg-white border-brand-100"
-                }`}
-              >
-                {plan.badge && (
-                  <div className="bg-brand-500 text-white text-[9px] font-black uppercase tracking-[0.35em] px-3 py-1 rounded-full w-fit mb-6">
-                    {plan.badge}
-                  </div>
-                )}
-                <div className="mb-6">
-                  <span
-                    className={`text-xs font-black uppercase tracking-[0.35em] ${plan.dark ? "text-brand-500" : "text-brand-400"}`}
-                  >
-                    {plan.label}
-                  </span>
-
-                  <div className="flex flex-col items-baseline gap-2 mt-2">
-                    <span
-                      className={`text-5xl font-black ${plan.dark ? "text-white" : "text-brand-950"}`}
-                    >
-                      {plan.price}
-                    </span>
-                    {plan.sub && (
-                      <span
-                        className={`text-sm ${plan.dark ? "text-brand-500" : "text-brand-400"}`}
-                      >
-                        {plan.sub}
-                      </span>
-                    )}
-                  </div>
+        <div className="flex lg:hidden flex-col gap-6 w-full">
+          {PLANS.map((plan) => (
+            <div
+              key={plan.label}
+              className={`w-full rounded-3xl p-8 flex flex-col border-2 ${
+                plan.dark
+                  ? "bg-brand-950 border-brand-800"
+                  : "bg-white border-brand-100"
+              }`}
+            >
+              {plan.badge && (
+                <div className="bg-brand-500 text-white text-[9px] font-black uppercase tracking-[0.35em] px-3 py-1 rounded-full w-fit mb-6">
+                  {plan.badge}
                 </div>
-                <ul className="space-y-3 flex-1 mb-8">
-                  {plan.perks.map((perk) => (
-                    <li key={perk} className="flex items-center gap-3">
-                      <div
-                        className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${plan.dark ? "bg-brand-700" : "bg-brand-50"}`}
-                      >
-                        <Check
-                          size={11}
-                          className={
-                            plan.dark ? "text-brand-300" : "text-brand-500"
-                          }
-                        />
-                      </div>
-                      <span
-                        className={`text-sm font-medium ${plan.dark ? "text-brand-200" : "text-brand-700"}`}
-                      >
-                        {perk}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                {plan.cta}
+              )}
+              <div className="mb-6">
+                <span
+                  className={`text-xs font-black uppercase tracking-[0.35em] ${plan.dark ? "text-brand-500" : "text-brand-400"}`}
+                >
+                  {plan.label}
+                </span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span
+                    className={`text-5xl font-black ${plan.dark ? "text-white" : "text-brand-950"}`}
+                  >
+                    {plan.price}
+                  </span>
+                  {plan.sub && (
+                    <span
+                      className={`text-sm ${plan.dark ? "text-brand-500" : "text-brand-400"}`}
+                    >
+                      {plan.sub}
+                    </span>
+                  )}
+                </div>
               </div>
-            ))}
-          </div>
-
-          <div className="flex gap-2">
-            {PLANS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  if (!scrollRef.current) return;
-                  const cardWidth =
-                    scrollRef.current.scrollWidth / PLANS.length;
-                  scrollRef.current.scrollLeft = cardWidth * i;
-                }}
-                className={`rounded-full transition-all duration-300 ${
-                  i === activeIndex
-                    ? "w-6 h-2 bg-brand-500"
-                    : "w-2 h-2 bg-brand-200"
-                }`}
-              />
-            ))}
-          </div>
+              <ul className="space-y-3 flex-1 mb-8">
+                {plan.perks.map((perk) => (
+                  <li key={perk} className="flex items-center gap-3">
+                    <div
+                      className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${plan.dark ? "bg-brand-700" : "bg-brand-50"}`}
+                    >
+                      <Check
+                        size={11}
+                        className={
+                          plan.dark ? "text-brand-300" : "text-brand-500"
+                        }
+                      />
+                    </div>
+                    <span
+                      className={`text-sm font-medium ${plan.dark ? "text-brand-200" : "text-brand-700"}`}
+                    >
+                      {perk}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              {plan.cta}
+            </div>
+          ))}
         </div>
       </div>
     </section>
