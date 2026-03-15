@@ -13,7 +13,9 @@ export const RotatingBadge = ({
   const inner = size === "sm" ? "w-14 h-14" : "w-20 h-20";
 
   return (
-    <div className={`${dim} flex items-center justify-center ${className}`}>
+    <div
+      className={`${dim} relative flex items-center justify-center ${className}`}
+    >
       <div className="absolute inset-0 border-2 border-dashed border-brand-300 rounded-full animate-[spin_20s_linear_infinite] opacity-40" />
       <div className="absolute inset-4 border border-brand-200 rounded-full animate-[spin_10s_linear_reverse_infinite] opacity-60" />
       <div

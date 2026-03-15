@@ -58,9 +58,42 @@ export const HeroSection = () => {
         </svg>
       </motion.div>
 
-      <RotatingBadge className="absolute top-28 right-16 z-20" />
+      <div className="hidden lg:block absolute top-28 right-16 z-20">
+        <RotatingBadge />
+      </div>
 
-      <main className="px-12 py-0 relative z-10">
+      {/* mobile only */}
+      <div className="flex lg:hidden flex-col items-center px-8 pt-12 pb-16 text-center gap-8">
+        <motion.h1
+          initial={{ y: "110%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-5xl sm:text-6xl font-black leading-tight tracking-tight text-brand-950"
+        >
+          From First Bite to{" "}
+          <span className="text-brand-600">Favourite Food.</span>
+        </motion.h1>
+
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-2xl"
+        >
+          <video
+            src={FeedingBabyVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover object-[50%_75%]"
+          />
+        </motion.div>
+
+        <RotatingBadge />
+      </div>
+
+      <main className="hidden lg:block px-12 py-0 relative z-10">
         <div className="max-w-7xl w-full flex flex-col justify-around min-h-[85dvh]">
           <div className="flex items-center gap-6 overflow-hidden">
             <motion.div

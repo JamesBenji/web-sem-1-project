@@ -1,12 +1,11 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
-  const navigate = useNavigate();
 
   return (
     <section
