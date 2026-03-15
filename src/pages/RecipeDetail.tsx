@@ -9,6 +9,7 @@ import {
 } from "../components/notifications/StickyNotification";
 import { useSearchParams } from "react-router";
 import { RECIPES } from "../data/recipes-data";
+import { RatingWidget } from "../components/interactives/RatingWidget";
 
 export const RecipeDetail: FC = () => {
   useEffect(() => {
@@ -269,6 +270,10 @@ export const RecipeDetail: FC = () => {
                 </p>
               </div>
             )}
+          </section>
+
+          <section className="lg:col-start-1">
+            <RatingWidget />
           </section>
         </main>
       </div>

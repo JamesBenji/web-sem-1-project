@@ -34,6 +34,7 @@ export type Recipe = {
   nutrition: Nutrition;
   ingredients: Ingredient[];
   steps: Step[];
+  rating?: number;
 };
 
 export const RECIPES: Recipe[] = [
@@ -92,6 +93,7 @@ export const RECIPES: Recipe[] = [
         tip: "Serve with soft rice or as a dip with toast fingers.",
       },
     ],
+    rating: 4,
   },
 
   {
@@ -129,6 +131,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4,
   },
   {
     id: 12,
@@ -170,6 +173,7 @@ export const RECIPES: Recipe[] = [
         tip: "The banana sweetens naturally — no sugar needed.",
       },
     ],
+    rating: 3.5,
   },
   {
     id: 13,
@@ -208,6 +212,7 @@ export const RECIPES: Recipe[] = [
         tip: "Add extra cooled boiled water if the purée is too thick.",
       },
     ],
+    rating: 5,
   },
   {
     id: 14,
@@ -244,6 +249,7 @@ export const RECIPES: Recipe[] = [
         tip: "The warmth of the cauliflower melts the cheese perfectly.",
       },
     ],
+    rating: 3.5,
   },
   {
     id: 15,
@@ -280,6 +286,7 @@ export const RECIPES: Recipe[] = [
         tip: "Frozen blueberries work just as well as fresh.",
       },
     ],
+    rating: 4,
   },
   {
     id: 16,
@@ -323,6 +330,7 @@ export const RECIPES: Recipe[] = [
         duration: 120,
       },
     ],
+    rating: 4.5,
   },
   {
     id: 17,
@@ -368,6 +376,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4,
   },
   {
     id: 9,
@@ -404,6 +413,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4,
   },
   {
     id: 10,
@@ -432,6 +442,7 @@ export const RECIPES: Recipe[] = [
         tip: "Use very ripe mango for the sweetest, smoothest result.",
       },
     ],
+    rating: 4,
   },
   {
     id: 18,
@@ -477,6 +488,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 3.5,
   },
   {
     id: 19,
@@ -526,6 +538,7 @@ export const RECIPES: Recipe[] = [
         tip: "Serve at a warm — not hot — temperature.",
       },
     ],
+    rating: 4,
   },
   {
     id: 20,
@@ -563,6 +576,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4,
   },
   {
     id: 21,
@@ -606,6 +620,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4,
   },
   {
     id: 22,
@@ -640,6 +655,7 @@ export const RECIPES: Recipe[] = [
         tip: "Sieving is essential — raspberry seeds are too tough for babies.",
       },
     ],
+    rating: 4,
   },
   {
     id: 23,
@@ -677,6 +693,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.6,
   },
   {
     id: 24,
@@ -713,6 +730,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.2,
   },
   {
     id: 25,
@@ -760,6 +778,7 @@ export const RECIPES: Recipe[] = [
         duration: 180,
       },
     ],
+    rating: 3.5,
   },
   {
     id: 26,
@@ -813,6 +832,7 @@ export const RECIPES: Recipe[] = [
         duration: 120,
       },
     ],
+    rating: 3.8,
   },
   {
     id: 27,
@@ -841,6 +861,7 @@ export const RECIPES: Recipe[] = [
         tip: "Use a very ripe peach for the best flavour and texture.",
       },
     ],
+    rating: 3.8,
   },
   {
     id: 28,
@@ -885,6 +906,7 @@ export const RECIPES: Recipe[] = [
         duration: 120,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 29,
@@ -922,6 +944,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 30,
@@ -966,6 +989,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 31,
@@ -995,6 +1019,7 @@ export const RECIPES: Recipe[] = [
         tip: "Serve immediately — the colour fades quickly.",
       },
     ],
+    rating: 4.4,
   },
   {
     id: 32,
@@ -1031,6 +1056,7 @@ export const RECIPES: Recipe[] = [
         duration: 120,
       },
     ],
+    rating: 4.6,
   },
   {
     id: 33,
@@ -1069,6 +1095,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.8,
   },
   {
     id: 34,
@@ -1112,6 +1139,7 @@ export const RECIPES: Recipe[] = [
         duration: 120,
       },
     ],
+    rating: 4.2,
   },
   {
     id: 35,
@@ -1147,6 +1175,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.1,
   },
   {
     id: 36,
@@ -1192,6 +1221,7 @@ export const RECIPES: Recipe[] = [
         duration: 120,
       },
     ],
+    rating: 4.7,
   },
   {
     id: 37,
@@ -1235,6 +1265,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 38,
@@ -1263,6 +1294,7 @@ export const RECIPES: Recipe[] = [
         tip: "Chill the ingredients first for an extra-refreshing purée.",
       },
     ],
+    rating: 4.3,
   },
   {
     id: 39,
@@ -1298,6 +1330,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 40,
@@ -1335,6 +1368,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.1,
   },
   {
     id: 41,
@@ -1369,6 +1403,7 @@ export const RECIPES: Recipe[] = [
         duration: 30,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 42,
@@ -1411,6 +1446,7 @@ export const RECIPES: Recipe[] = [
         tip: "This partial blending gives great texture for older babies.",
       },
     ],
+    rating: 4.3,
   },
   {
     id: 43,
@@ -1445,6 +1481,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 44,
@@ -1488,6 +1525,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 45,
@@ -1524,6 +1562,7 @@ export const RECIPES: Recipe[] = [
         duration: 30,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 46,
@@ -1571,6 +1610,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 47,
@@ -1614,6 +1654,7 @@ export const RECIPES: Recipe[] = [
         duration: 300,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 48,
@@ -1642,6 +1683,7 @@ export const RECIPES: Recipe[] = [
         tip: "Very ripe kiwi is sweeter and easier to blend.",
       },
     ],
+    rating: 4.8,
   },
   {
     id: 49,
@@ -1686,6 +1728,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.4,
   },
   {
     id: 50,
@@ -1732,6 +1775,7 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
   {
     id: 1,
@@ -1780,6 +1824,7 @@ export const RECIPES: Recipe[] = [
         tip: "Freeze leftovers in ice-cube portions for easy future meals.",
       },
     ],
+    rating: 4.3,
   },
   {
     id: 2,
@@ -1825,6 +1870,7 @@ export const RECIPES: Recipe[] = [
         tip: "Make only what you need; avocado oxidises fast.",
       },
     ],
+    rating: 4.3,
   },
   {
     id: 3,
@@ -1870,6 +1916,7 @@ export const RECIPES: Recipe[] = [
         tip: "Retain the cooking water — it's packed with vitamins.",
       },
     ],
+    rating: 4.3,
   },
   {
     id: 4,
@@ -1915,6 +1962,7 @@ export const RECIPES: Recipe[] = [
         tip: "Older babies (8m+) may enjoy a slightly coarser texture.",
       },
     ],
+    rating: 4.3,
   },
   {
     id: 5,
@@ -1961,6 +2009,7 @@ export const RECIPES: Recipe[] = [
         tip: "For Stage 2 babies you can leave a little texture.",
       },
     ],
+    rating: 4.3,
   },
 
   {
@@ -1999,6 +2048,7 @@ export const RECIPES: Recipe[] = [
         tip: "The heat of the broccoli will melt the cheese beautifully.",
       },
     ],
+    rating: 4.3,
   },
   {
     id: 8,
@@ -2035,5 +2085,6 @@ export const RECIPES: Recipe[] = [
         duration: 60,
       },
     ],
+    rating: 4.3,
   },
 ];

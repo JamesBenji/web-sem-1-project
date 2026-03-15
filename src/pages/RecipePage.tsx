@@ -23,14 +23,14 @@ const RecipePage: FC = () => {
 
   return (
     <main className="min-h-screen bg-white ">
-      <header className="bg-brand-100 px-8 lg:px-16 pt-32 pb-12 border-b border-brand-200">
+      <header className="bg-brand-100 px-8 lg:px-16 lg:pt-32 pt-28 pb-6 lg:pb-12 border-b border-brand-200">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl lg:text-7xl font-black text-brand-950 mb-4 leading-tight">
+          <h1 className="text-3xl  lg:text-7xl font-black text-brand-950 mb-4 leading-tight">
             What's cooking
             <span className="text-brand-500"> today?</span>
           </h1>
 
-          <div className="relative mb-4 max-w-lg mx-auto">
+          <div className="relative mb-2 lg:mb-4 max-w-lg mx-auto">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-400">
               <SearchIcon />
             </span>
@@ -40,7 +40,7 @@ const RecipePage: FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               aria-label="Search recipes"
-              className="w-full rounded-2xl border-2 border-brand-200 bg-white py-3.5 pl-11 pr-4 text-sm text-brand-950 outline-none transition-colors duration-200 focus:border-brand-400 placeholder:text-brand-300"
+              className="w-full rounded-2xl border-2 border-brand-200 bg-white py-2 lg:py-3.5 pl-11 pr-4 text-sm text-brand-950 outline-none transition-colors duration-200 focus:border-brand-400 placeholder:text-brand-300"
             />
           </div>
 
@@ -66,9 +66,9 @@ const RecipePage: FC = () => {
         </div>
       </header>
 
-      <section className="max-w-7xl mx-auto px-8 lg:px-16 py-12">
+      <section className="max-w-7xl mx-auto px-8 lg:px-16 py-8">
         <div className="flex justify-end mb-5 ">
-          <p className="text-brand-800">
+          <p className="text-brand-800 italic text-xs">
             {filtered.length} of {recipes.length} recipes{" "}
           </p>
         </div>

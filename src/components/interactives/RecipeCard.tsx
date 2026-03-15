@@ -64,6 +64,21 @@ export const RecipeCard: FC<RecipeCardProps> = ({ recipe, onSelect }) => {
           </span>
           <span className="font-semibold">{recipe.stage}</span>
         </p>
+        <p className="flex items-center gap-1 mt-2 text-[13px]">
+          {recipe.rating ? (
+            <>
+              <span className="text-amber-400">
+                {"★".repeat(Math.round(recipe.rating))}
+                {"☆".repeat(5 - Math.round(recipe.rating))}
+              </span>
+              <span className="text-brand-500 font-semibold">
+                {recipe.rating.toFixed(1)}
+              </span>
+            </>
+          ) : (
+            <span className="text-amber-700 font-semibold">Not rated</span>
+          )}
+        </p>
       </div>
     </article>
   );
