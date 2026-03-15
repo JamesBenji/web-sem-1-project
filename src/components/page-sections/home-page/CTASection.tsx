@@ -1,9 +1,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Link, useNavigate } from "react-router";
+import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
+  const navigate = useNavigate();
 
   return (
     <section
@@ -19,7 +22,7 @@ export const CTASection = () => {
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-brand-200 text-xs font-black uppercase tracking-[0.4em] mb-6">
+          <p className="text-brand-200 text-sm font-black uppercase tracking-wide mb-6">
             Start Your Journey
           </p>
           <h2 className="text-6xl font-black text-white leading-tight mb-6">
@@ -31,13 +34,34 @@ export const CTASection = () => {
           </h2>
 
           <div className="flex justify-center gap-4">
-            <motion.button
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-white text-brand-700 px-10 py-4 text-sm font-black uppercase tracking-widest rounded-full hover:bg-brand-50 transition-all duration-300 shadow-sm shadow-brand-800 flex items-center gap-2 h-16  ease-out  hover:shadow-md hover:-translate-y-0.5 border-4 border-white "
-            >
-              See Recipes
-            </motion.button>
+            <Link to="/recipes" className="inline-block">
+              <motion.button
+                whileHover="hovered"
+                whileTap={{ scale: 0.98 }}
+                variants={{
+                  hovered: { scale: 1.02, y: -2 },
+                }}
+                className="
+          relative flex items-center gap-2 h-16 px-10 py-4 
+          bg-white text-brand-700 border-4 border-white
+          text-lg font-black tracking-normal rounded-full 
+          shadow-sm shadow-brand-800/20 
+          transition-colors duration-300 ease-out 
+          hover:bg-brand-50 hover:shadow-md
+        "
+              >
+                <span>See Recipes</span>
+
+                <motion.span
+                  variants={{
+                    hovered: { x: 5 },
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <ArrowRight size={18} />
+                </motion.span>
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>

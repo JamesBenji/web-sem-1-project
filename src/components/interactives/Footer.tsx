@@ -8,6 +8,7 @@ const FOOTER_LINKS: [string, { label: string; to: string }[]][] = [
       { label: "Recipes", to: "/recipes" },
       { label: "About", to: "/about" },
       { label: "Contact", to: "/contact" },
+      { label: "FAQ", to: "/#faq" },
     ],
   ],
 ];

@@ -28,7 +28,7 @@ export const FEATURE_STEPS = [
   {
     number: "03",
     title: "Interactive Timers",
-    body: "Weaning rarely happens in a quiet kitchen with nothing else going on. There's usually something on the hob, a baby on the floor, and about four other things demanding your attention. Set a timer and step away — we'll keep track so you don't have to, and remind you before anything has a chance to go wrong.",
+    body: "Weaning rarely happens in a quiet kitchen with nothing else going on. There's usually something on the hob, a baby on the floor, and about four other things demanding your attention. Set a timer and step away. We'll keep track so you don't have to, and remind you before anything has a chance to go wrong.",
     accent: "#f0fdf4",
     tag: "STAY ON TRACK",
   },
@@ -103,4 +103,32 @@ export const BRAND_PALETTE = [
   "#FF375F",
   "#32D74B",
   "#64D2FF",
+];
+
+export const FAQS = [
+  {
+    question: "When should I start weaning my baby?",
+    answer:
+      "Most babies are ready for solid foods at around 6 months. Before then, breast milk or formula gives them everything they need. Look for signs like being able to sit up and hold their head steady, showing interest in what you're eating, and being able to move food to the back of their mouth rather than pushing it straight back out.",
+  },
+  {
+    question: "What foods should I introduce first?",
+    answer:
+      "Soft vegetables like cooked carrot, sweet potato, and butternut squash are a great place to start — they're easy to purée and gentle on a new digestive system. You can also try soft fruits like banana or avocado. There's no strict order, but starting with vegetables before fruit means your baby gets used to savoury flavours before the sweeter ones.",
+  },
+  {
+    question: "Can I give my baby the same food as the rest of the family?",
+    answer:
+      "Often yes, with a few adjustments. Babies under 12 months shouldn't have added salt or sugar, honey, whole nuts, or certain fish. But most family meals can be adapted — just set aside a portion before seasoning and blend or mash to the right texture for your baby's stage.",
+  },
+  {
+    question: "How much should my baby be eating?",
+    answer:
+      "At first, very little — a few teaspoons is plenty. Weaning at 6 months is about exploring tastes and textures, not replacing milk feeds. Let your baby lead. Some days they'll eat more, some days less. Milk remains their main source of nutrition until around 12 months, so there's no need to worry if meals seem small.",
+  },
+  {
+    question: "What if my baby refuses to eat?",
+    answer:
+      "It's completely normal. Babies can take 10 to 15 exposures to a new food before accepting it, so one rejection doesn't mean they'll never like it. Keep mealtimes relaxed and positive, eat together when you can, and try again another day. Forcing or pressuring rarely helps and can make mealtimes stressful for both of you.",
+  },
 ];
