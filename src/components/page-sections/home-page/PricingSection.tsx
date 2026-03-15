@@ -2,152 +2,319 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { FadeUp } from "../../ui/FadeUp";
 import { Link } from "react-router";
+import { useRef, useState } from "react";
 
-export const PricingSection = () => (
-  <section className="bg-white py-24 px-12">
-    <div className="max-w-7xl mx-auto">
-      <FadeUp className="text-center mb-16">
-        <span className="text-sm font-black uppercase tracking-wide text-brand-400">
-          Simple Pricing
-        </span>
-        <h2 className="text-5xl font-black text-brand-950 mt-3 leading-tight">
-          Start free.
-          <br />
-          <span className="text-brand-500">Grow when ready.</span>
-        </h2>
-        <p className="text-brand-500 mt-4 text-base max-w-md mx-auto">
-          No subscriptions. No pressure. Just access to beautiful, trusted
-          recipes at your own pace.
-        </p>
-      </FadeUp>
+const PLANS = [
+  {
+    label: "Free",
+    price: "€0",
+    sub: null,
+    perks: ["50 of 200 recipes", "Basic stage guidance", "Community access"],
+    dark: false,
+    cta: (
+      <Link
+        to={"/recipes"}
+        className="w-full py-4 text-sm font-black text-center uppercase tracking-widest rounded-2xl transition-all duration-300 border-2 border-brand-200 text-brand-800 hover:bg-brand-50 hover:border-brand-300"
+      >
+        Start Free
+      </Link>
+    ),
+  },
+  {
+    label: "Digital",
+    price: "€24",
+    sub: "one-time",
+    badge: "Most Popular",
+    perks: [
+      "All 200 recipes",
+      "Age-by-age meal plans",
+      "Allergen safety guides",
+      "Printable recipe cards",
+      "Lifetime updates",
+    ],
+    dark: true,
+    cta: (
+      <button
+        disabled
+        className="cursor-not-allowed w-full py-4 text-sm font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-brand-500 text-white shadow-lg shadow-brand-800"
+      >
+        COMING SOON
+      </button>
+    ),
+  },
+  {
+    label: "Book",
+    price: "€42",
+    sub: "incl. shipping",
+    perks: [
+      "Everything in Digital",
+      "Printed hardcover book",
+      "Lay-flat spiral binding",
+      "Waterproof pages",
+      "Gift-ready packaging",
+    ],
+    dark: false,
+    cta: (
+      <button
+        disabled
+        className="cursor-not-allowed w-full py-4 text-sm font-black uppercase tracking-widest rounded-2xl transition-all duration-300 border-2 border-brand-200 text-brand-800"
+      >
+        COMING SOON
+      </button>
+    ),
+  },
+];
 
-      <div className="grid grid-cols-3 gap-8 items-stretch">
-        <FadeUp delay={0}>
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 250, damping: 20 }}
-            className="rounded-3xl p-8 h-full flex flex-col border-2 transition-all duration-400 bg-white border-brand-100 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-50"
-          >
-            <div className="mb-6">
-              <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-400">
-                Free
-              </span>
-              <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-5xl font-black text-brand-950">€0</span>
-              </div>
-            </div>
-            <ul className="space-y-3 flex-1 mb-8">
-              {[
-                "50 of 200 recipes",
-                "Basic stage guidance",
-                "Community access",
-              ].map((perk) => (
-                <li key={perk} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-brand-50">
-                    <Check size={11} className="text-brand-500" />
-                  </div>
-                  <span className="text-sm font-medium text-brand-700">
-                    {perk}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <Link
-              to={"/recipes"}
-              className="w-full py-4 text-sm font-black text-center uppercase tracking-widest rounded-2xl transition-all duration-300 border-2 border-brand-200 text-brand-800 hover:bg-brand-50 hover:border-brand-300"
-            >
-              Start Free
-            </Link>
-          </motion.div>
+export const PricingSection = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.scrollWidth / PLANS.length;
+    setActiveIndex(Math.round(el.scrollLeft / cardWidth));
+  };
+
+  return (
+    <section className="bg-white py-24 px-12">
+      <div className="max-w-7xl mx-auto">
+        <FadeUp className="text-center mb-16">
+          <span className="text-sm font-black uppercase tracking-wide text-brand-400">
+            Simple Pricing
+          </span>
+          <h2 className="text-5xl font-black text-brand-950 mt-3 leading-tight">
+            Start free.
+            <br />
+            <span className="text-brand-500">Grow when ready.</span>
+          </h2>
+          <p className="text-brand-500 mt-4 text-base max-w-md mx-auto">
+            No subscriptions. No pressure. Just access to beautiful, trusted
+            recipes at your own pace.
+          </p>
         </FadeUp>
 
-        <FadeUp delay={0}>
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 250, damping: 20 }}
-            className="rounded-3xl p-8 h-full flex flex-col border-2 transition-all duration-400 bg-brand-950 border-brand-800 shadow-2xl shadow-brand-200"
-          >
-            <div className="bg-brand-500 text-white text-[9px] font-black uppercase tracking-[0.35em] px-3 py-1 rounded-full w-fit mb-6">
-              Most Popular
-            </div>
-            <div className="mb-6">
-              <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-500">
-                Digital
-              </span>
-              <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-5xl font-black text-white">€24</span>
-                <span className="text-sm text-brand-500">one-time</span>
-              </div>
-            </div>
-            <ul className="space-y-3 flex-1 mb-8">
-              {[
-                "All 200 recipes",
-                "Age-by-age meal plans",
-                "Allergen safety guides",
-                "Printable recipe cards",
-                "Lifetime updates",
-              ].map((perk) => (
-                <li key={perk} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-brand-700">
-                    <Check size={11} className="text-brand-300" />
-                  </div>
-                  <span className="text-sm font-medium text-brand-200">
-                    {perk}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <button
-              disabled
-              className="cursor-not-allowed w-full py-4 text-sm font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-brand-500 text-white hover:bg-brand-400 shadow-lg shadow-brand-800"
+        {/* desktop only */}
+        <div className="hidden lg:grid grid-cols-3 gap-8 items-stretch">
+          <FadeUp delay={0}>
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 250, damping: 20 }}
+              className="rounded-3xl p-8 h-full flex flex-col border-2 transition-all duration-400 bg-white border-brand-100 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-50"
             >
-              COMING SOON
-            </button>
-          </motion.div>
-        </FadeUp>
+              <div className="mb-6">
+                <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-400">
+                  Free
+                </span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-5xl font-black text-brand-950">€0</span>
+                </div>
+              </div>
+              <ul className="space-y-3 flex-1 mb-8">
+                {[
+                  "50 of 200 recipes",
+                  "Basic stage guidance",
+                  "Community access",
+                ].map((perk) => (
+                  <li key={perk} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-brand-50">
+                      <Check size={11} className="text-brand-500" />
+                    </div>
+                    <span className="text-sm font-medium text-brand-700">
+                      {perk}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to={"/recipes"}
+                className="w-full py-4 text-sm font-black text-center uppercase tracking-widest rounded-2xl transition-all duration-300 border-2 border-brand-200 text-brand-800 hover:bg-brand-50 hover:border-brand-300"
+              >
+                Start Free
+              </Link>
+            </motion.div>
+          </FadeUp>
 
-        <FadeUp delay={0}>
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 250, damping: 20 }}
-            className="rounded-3xl p-8 h-full flex flex-col border-2 transition-all duration-400 bg-white border-brand-100 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-50"
-          >
-            <div className="mb-6">
-              <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-400">
-                Book
-              </span>
-              <div className="flex items-baseline gap-2 mt-2">
-                <span className="text-5xl font-black text-brand-950">€42</span>
-                <span className="text-sm text-brand-400">incl. shipping</span>
-              </div>
-            </div>
-            <ul className="space-y-3 flex-1 mb-8">
-              {[
-                "Everything in Digital",
-                "Printed hardcover book",
-                "Lay-flat spiral binding",
-                "Waterproof pages",
-                "Gift-ready packaging",
-              ].map((perk) => (
-                <li key={perk} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-brand-50">
-                    <Check size={11} className="text-brand-500" />
-                  </div>
-                  <span className="text-sm font-medium text-brand-700">
-                    {perk}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <button
-              disabled
-              className="cursor-not-allowed w-full py-4 text-sm font-black uppercase tracking-widest rounded-2xl transition-all duration-300 border-2 border-brand-200 text-brand-800 hover:bg-brand-50 hover:border-brand-300"
+          <FadeUp delay={0}>
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 250, damping: 20 }}
+              className="rounded-3xl p-8 h-full flex flex-col border-2 transition-all duration-400 bg-brand-950 border-brand-800 shadow-2xl shadow-brand-200"
             >
-              COMING SOON
-            </button>
-          </motion.div>
-        </FadeUp>
+              <div className="bg-brand-500 text-white text-[9px] font-black uppercase tracking-[0.35em] px-3 py-1 rounded-full w-fit mb-6">
+                Most Popular
+              </div>
+              <div className="mb-6">
+                <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-500">
+                  Digital
+                </span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-5xl font-black text-white">€24</span>
+                  <span className="text-sm text-brand-500">one-time</span>
+                </div>
+              </div>
+              <ul className="space-y-3 flex-1 mb-8">
+                {[
+                  "All 200 recipes",
+                  "Age-by-age meal plans",
+                  "Allergen safety guides",
+                  "Printable recipe cards",
+                  "Lifetime updates",
+                ].map((perk) => (
+                  <li key={perk} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-brand-700">
+                      <Check size={11} className="text-brand-300" />
+                    </div>
+                    <span className="text-sm font-medium text-brand-200">
+                      {perk}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                disabled
+                className="cursor-not-allowed w-full py-4 text-sm font-black uppercase tracking-widest rounded-2xl transition-all duration-300 bg-brand-500 text-white hover:bg-brand-400 shadow-lg shadow-brand-800"
+              >
+                COMING SOON
+              </button>
+            </motion.div>
+          </FadeUp>
+
+          <FadeUp delay={0}>
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 250, damping: 20 }}
+              className="rounded-3xl p-8 h-full flex flex-col border-2 transition-all duration-400 bg-white border-brand-100 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-50"
+            >
+              <div className="mb-6">
+                <span className="text-xs font-black uppercase tracking-[0.35em] text-brand-400">
+                  Book
+                </span>
+                <div className="flex items-baseline gap-2 mt-2">
+                  <span className="text-5xl font-black text-brand-950">
+                    €42
+                  </span>
+                  <span className="text-sm text-brand-400">incl. shipping</span>
+                </div>
+              </div>
+              <ul className="space-y-3 flex-1 mb-8">
+                {[
+                  "Everything in Digital",
+                  "Printed hardcover book",
+                  "Lay-flat spiral binding",
+                  "Waterproof pages",
+                  "Gift-ready packaging",
+                ].map((perk) => (
+                  <li key={perk} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 bg-brand-50">
+                      <Check size={11} className="text-brand-500" />
+                    </div>
+                    <span className="text-sm font-medium text-brand-700">
+                      {perk}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                disabled
+                className="cursor-not-allowed w-full py-4 text-sm font-black uppercase tracking-widest rounded-2xl transition-all duration-300 border-2 border-brand-200 text-brand-800 hover:bg-brand-50 hover:border-brand-300"
+              >
+                COMING SOON
+              </button>
+            </motion.div>
+          </FadeUp>
+        </div>
+
+        {/* mobile only */}
+        <div className="flex lg:hidden flex-col items-center gap-6">
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            style={{ touchAction: "pan-y" }}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth w-full px-[10%] pb-2 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
+          >
+            {PLANS.map((plan) => (
+              <div
+                key={plan.label}
+                className={`snap-center shrink-0 w-[80%] rounded-3xl p-8 flex flex-col border-2 ${
+                  plan.dark
+                    ? "bg-brand-950 border-brand-800"
+                    : "bg-white border-brand-100"
+                }`}
+              >
+                {plan.badge && (
+                  <div className="bg-brand-500 text-white text-[9px] font-black uppercase tracking-[0.35em] px-3 py-1 rounded-full w-fit mb-6">
+                    {plan.badge}
+                  </div>
+                )}
+                <div className="mb-6">
+                  <span
+                    className={`text-xs font-black uppercase tracking-[0.35em] ${plan.dark ? "text-brand-500" : "text-brand-400"}`}
+                  >
+                    {plan.label}
+                  </span>
+
+                  <div className="flex flex-col items-baseline gap-2 mt-2">
+                    <span
+                      className={`text-5xl font-black ${plan.dark ? "text-white" : "text-brand-950"}`}
+                    >
+                      {plan.price}
+                    </span>
+                    {plan.sub && (
+                      <span
+                        className={`text-sm ${plan.dark ? "text-brand-500" : "text-brand-400"}`}
+                      >
+                        {plan.sub}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <ul className="space-y-3 flex-1 mb-8">
+                  {plan.perks.map((perk) => (
+                    <li key={perk} className="flex items-center gap-3">
+                      <div
+                        className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${plan.dark ? "bg-brand-700" : "bg-brand-50"}`}
+                      >
+                        <Check
+                          size={11}
+                          className={
+                            plan.dark ? "text-brand-300" : "text-brand-500"
+                          }
+                        />
+                      </div>
+                      <span
+                        className={`text-sm font-medium ${plan.dark ? "text-brand-200" : "text-brand-700"}`}
+                      >
+                        {perk}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                {plan.cta}
+              </div>
+            ))}
+          </div>
+
+          <div className="flex gap-2">
+            {PLANS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  if (!scrollRef.current) return;
+                  const cardWidth =
+                    scrollRef.current.scrollWidth / PLANS.length;
+                  scrollRef.current.scrollLeft = cardWidth * i;
+                }}
+                className={`rounded-full transition-all duration-300 ${
+                  i === activeIndex
+                    ? "w-6 h-2 bg-brand-500"
+                    : "w-2 h-2 bg-brand-200"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
