@@ -5,6 +5,7 @@ Tiny Spoon is a responsive multi-page website created for parents and caregivers
 The main idea behind Tiny Spoon is to offer a small digital space where users can explore recipe content, learn more about the purpose of the platform, and reach out through a contact form if they have questions, feedback, or suggestions. Since the website is centered around children’s nutrition, the design was planned to feel soft, welcoming, and clear rather than busy or overly decorative.
 
 This project was built using React, TypeScript, Tailwind CSS, and JavaScript, with a strong focus on responsive design, accessibility, semantic structure, and user-friendly navigation.
+[Tiny Spoon Live Website](https://tinyspoons-c7d21.web.app/)
 
 ---
 # How to Run the Project Locally
