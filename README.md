@@ -71,11 +71,12 @@ The Home page introduces the website and gives users a first impression of the p
 ## About Page
 
 The About page explains the purpose of the website in more detail. It helps users understand the idea behind Tiny Spoon and why the platform focuses on recipes for babies and young children.
-
+![Tiny Spoon Project Overview](./public/about.png)
 ## Recipes Page
 
 The Recipes page is the main theme-related content page of the website. It presents recipe content in a clear and organised format so that users can explore meal ideas more easily.
-
+![Tiny Spoon Project Overview](./public/recipe1.png)
+![Tiny Spoon Project Overview](./public/recipe2.png)
 ## Contact Page
 
 The Contact page allows users to get in touch through a form. It includes labeled fields, frontend validation, inline error handling, and success feedback after valid submission. The page was intentionally kept simple so that the form remains the main focus.
