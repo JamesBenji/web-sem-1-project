@@ -34,7 +34,7 @@ Then open the local Vite URL shown in your terminal (typically `http://localhost
 
 The purpose of Tiny Spoon is to create a website that feels approachable and supportive for parents of babies and toddlers. Rather than trying to include too many features, the project focuses on doing the essentials well: presenting content clearly, making navigation simple, and providing a contact page that is easy to use.
 
-From the beginning, I wanted the website to feel calm and trustworthy. Since the subject is baby and children’s recipes, it was important that the interface did not feel too corporate, too loud, or too complicated. The overall structure and styling decisions were made with that goal in mind.
+From the beginning, We wanted the website to feel calm and trustworthy. Since the subject is baby and children’s recipes, it was important that the interface did not feel too corporate, too loud, or too complicated. The overall structure and styling decisions were made with that goal in mind.
 
 Tiny Spoon includes four main pages as required for the project:
 
@@ -53,33 +53,10 @@ The main goal of this project was to design and develop a website that would be 
 
 More specifically, the goals of Tiny Spoon were:
 
-- to present baby-friendly recipe content in an organised and readable way
-- to create a warm and supportive visual identity
-- to provide clear navigation between pages
-- to include a contact page with form validation
-- to apply good frontend development practices using modern web technologies
-
-## Target Users
-
-The website is intended mainly for:
-
-- parents of babies and toddlers
-- caregivers and guardians
-- families looking for child-friendly recipe inspiration
-
-These users are likely to value simplicity, readability, and trust. Because of that, the design was kept clean and the information was structured in a straightforward way.
-
-## User Needs
-
-A user visiting Tiny Spoon should be able to:
-
-- understand what the website is about quickly
-- move between pages without confusion
-- read content comfortably on desktop or mobile
-- contact the website easily through a simple form
-- receive clear feedback if they submit invalid form information
-
----
+- To present the Tiny Spoons brand as trustworthy, warm and expert in early childhood nutrition.
+-  To allow users to browse and filter recipes by age stage.
+- To allow users to understand the brand through contact and about pages eventually building credibility.
+- To deliver a responsive website experience across mobile, tablet and desktop devices.
 
 # Website Structure
 Tiny Spoon is a multi-page website made up of four main sections.
@@ -232,20 +209,6 @@ Accessibility was part of the development process throughout the project. For ex
 - HTML (rendered semantic structure)
 - CSS (through Tailwind utility classes and theme tokens)
 
-## Libraries and Tools
-
-- React
-- React Router
-- Tailwind CSS
-- Framer Motion
-- GSAP
-- Vite
-- Git and GitHub for version control
-
-No content management system was used in this project.
-
----
-
 # Semantic HTML and Accessibility
 
 One of the project requirements was the use of semantic HTML, and this was an important part of the build. Elements such as `main`, `section`, `form`, `label`, `input`, `textarea`, and `button` were used where appropriate to improve both structure and accessibility.
@@ -316,24 +279,3 @@ These changes improved both usability and the overall quality of the final page.
 
 ---
 
-# Deployment
-
-This project can be deployed with static hosting providers. The repository already includes Firebase Hosting configuration files:
-
-- `firebase.json`
-- `.firebaserc`
-
-If deployed, the live project link can be added here.
-
----
-# Code Quality and Best Practices
-
-Throughout the project, effort was made to keep the code clean, readable, and organised. Structure, naming, and layout decisions were made with maintainability in mind.
-
-The project also aimed to follow best practices by:
-
-- keeping styling consistent
-- using semantic structure
-- validating form inputs
-- making the site responsive
-- maintaining a clear page architecture
