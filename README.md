@@ -7,10 +7,29 @@ The main idea behind Tiny Spoon is to offer a small digital space where users ca
 This project was built using React, TypeScript, Tailwind CSS, and JavaScript, with a strong focus on responsive design, accessibility, semantic structure, and user-friendly navigation.
 
 ---
+# How to Run the Project Locally
+
+To run this project locally:
+
+1. Clone or download the repository.
+2. Open the project folder in a terminal.
+3. Install dependencies.
+4. Start the development server.
+
+Commands:
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local Vite URL shown in your terminal (typically `http://localhost:5173`).
+
+---
 
 # Project Overview
 
-![Tiny Spoon Project Overview](./public/project-overview.png)
+![Tiny Spoon Project Overview](./public/home.png)
 
 The purpose of Tiny Spoon is to create a website that feels approachable and supportive for parents of babies and toddlers. Rather than trying to include too many features, the project focuses on doing the essentials well: presenting content clearly, making navigation simple, and providing a contact page that is easy to use.
 
@@ -67,11 +86,11 @@ Tiny Spoon is a multi-page website made up of four main sections.
 ## Home Page
 
 The Home page introduces the website and gives users a first impression of the platform. Its role is to welcome visitors, communicate the purpose of Tiny Spoon, and guide them toward the other parts of the site.
-![Tiny Spoon Project Overview](./public/project-overview.png)
+![Tiny Spoon Project Overview](./public/home.png)
 ## About Page
 
 The About page explains the purpose of the website in more detail. It helps users understand the idea behind Tiny Spoon and why the platform focuses on recipes for babies and young children.
-![Tiny Spoon Project Overview](./public/about.png)
+![Tiny Spoon Project Overview](./public/about.pn)
 ## Recipes Page
 
 The Recipes page is the main theme-related content page of the website. It presents recipe content in a clear and organised format so that users can explore meal ideas more easily.
@@ -80,7 +99,7 @@ The Recipes page is the main theme-related content page of the website. It prese
 ## Contact Page
 
 The Contact page allows users to get in touch through a form. It includes labeled fields, frontend validation, inline error handling, and success feedback after valid submission. The page was intentionally kept simple so that the form remains the main focus.
-![Tiny Spoon Website Structure](./public/website-structure.png)
+![Tiny Spoon Website Structure](./public/contact.png)
 ---
 
 # Planning and Design Process
@@ -114,20 +133,6 @@ Main pink brand scale used across the UI:
 - `brand-800`: `#a3004c`
 - `brand-900`: `#861043`
 - `brand-950`: `#510424`
-
-Secondary blue scale available in the theme:
-
-- `brandBlue-50`: `#f0f9ff`
-- `brandBlue-100`: `#dff2fe`
-- `brandBlue-200`: `#b8e6fe`
-- `brandBlue-300`: `#74d4ff`
-- `brandBlue-400`: `#00bcff`
-- `brandBlue-500`: `#00a6f4`
-- `brandBlue-600`: `#0084d1`
-- `brandBlue-700`: `#0069a8`
-- `brandBlue-800`: `#00598a`
-- `brandBlue-900`: `#024a70`
-- `brandBlue-950`: `#052f4a`
 
 How these colors are used in the current implementation:
 
@@ -310,26 +315,6 @@ These changes improved both usability and the overall quality of the final page.
 
 ---
 
-# How to Run the Project Locally
-
-To run this project locally:
-
-1. Clone or download the repository.
-2. Open the project folder in a terminal.
-3. Install dependencies.
-4. Start the development server.
-
-Commands:
-
-```bash
-npm install
-npm run dev
-```
-
-Then open the local Vite URL shown in your terminal (typically `http://localhost:5173`).
-
----
-
 # Deployment
 
 This project can be deployed with static hosting providers. The repository already includes Firebase Hosting configuration files:
@@ -340,7 +325,6 @@ This project can be deployed with static hosting providers. The repository alrea
 If deployed, the live project link can be added here.
 
 ---
-
 # Code Quality and Best Practices
 
 Throughout the project, effort was made to keep the code clean, readable, and organised. Structure, naming, and layout decisions were made with maintainability in mind.
